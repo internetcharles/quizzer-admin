@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -22,6 +23,7 @@ export const Question = ({
         id={questionId}
         className="question"
         value={questionState[idx].question}
+        onChange={handleQuestionChange}
       />
       <label htmlFor={correctAnswerId}>Correct Answer</label>
       <input
@@ -30,7 +32,8 @@ export const Question = ({
         data-idx={idx}
         id={correctAnswerId}
         value={questionState[idx].correctAnswer}
-        className="correct-answer"
+        className="correctAnswer"
+        onChange={handleQuestionChange}
       />
       <label htmlFor={incorrectAnswer1Id}>Incorrect Answers</label>
       <input
@@ -38,8 +41,8 @@ export const Question = ({
         name={incorrectAnswer1Id}
         data-idx={idx}
         id={incorrectAnswer1Id}
-        value={questionState[idx].incorrectAnswers[0]}
-        className="correct-answer"
+        value={questionState[idx].incorrectAnswers1}
+        className="incorrectAnswer1"
         onChange={handleQuestionChange}
       />
       <input
@@ -47,8 +50,8 @@ export const Question = ({
         name={incorrectAnswer2Id}
         data-idx={idx}
         id={incorrectAnswer2Id}
-        value={questionState[idx].incorrectAnswers[1]}
-        className="correct-answer"
+        value={questionState[idx].incorrectAnswers2}
+        className="incorrectAnswer2"
         onChange={handleQuestionChange}
       />
       <input
@@ -56,8 +59,8 @@ export const Question = ({
         name={incorrectAnswer3Id}
         data-idx={idx}
         id={incorrectAnswer3Id}
-        value={questionState[idx].incorrectAnswers[2]}
-        className="correct-answer"
+        value={questionState[idx].incorrectAnswers3}
+        className="incorrectAnswer3"
         onChange={handleQuestionChange}
       />
     </div>
@@ -66,17 +69,13 @@ export const Question = ({
 
 Question.propTypes = {
   idx: PropTypes.number,
-  questionState: PropTypes.shape({
-    question: '',
-    correctAnswer: '',
-    incorrectAnswers: [],
-  }),
+  questionState: PropTypes.array,
   handleQuestionChange: PropTypes.func,
 };
 
 Question.defaultProps = {
   idx: 0,
-  questionState: [],
+  questionState: {},
   handleQuestionChange: {},
 };
 
