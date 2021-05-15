@@ -2,7 +2,7 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable import/no-named-as-default */
 import React, { useState } from 'react';
-import { postNote } from '../../services/quiz-api';
+import { postQuiz } from '../../services/quiz-api';
 import Question from './Question';
 
 export const Form = () => {
@@ -50,7 +50,7 @@ export const Form = () => {
     };
 
     console.log(formattedQuiz);
-    postNote(formattedQuiz);
+    postQuiz(formattedQuiz);
   };
 
   const handleTitleChange = (e) => {
