@@ -2,19 +2,17 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable import/no-named-as-default */
 import React, { useState } from 'react';
+import { postQuiz } from '../../services/quiz-api';
 import Question from './Question';
 
 export const Form = () => {
   const blankQuestion = {
     question: '',
     correctAnswer: '',
-    incorrectAnswers: [],
   };
 
-  const [quizState, setQuizState] = useState({
-    title: '',
-    description: '',
-  });
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
 
   const [questionState, setQuestionState] = useState([
     { ...blankQuestion },
@@ -26,14 +24,41 @@ export const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ ...questionState, ...quizState });
+
+    const questions = [];
+    const correctAnswers = [];
+    const incorrectAnswers1 = [];
+    const incorrectAnswers2 = [];
+    const incorrectAnswers3 = [];
+
+    questionState.forEach((question) => {
+      questions.push(question.question);
+      correctAnswers.push(question.correctAnswer);
+      incorrectAnswers1.push(question.incorrectAnswer1);
+      incorrectAnswers2.push(question.incorrectAnswer2);
+      incorrectAnswers3.push(question.incorrectAnswer3);
+    });
+
+    const formattedQuiz = {
+      title,
+      description,
+      questions: JSON.stringify(questions),
+      correctAnswers: JSON.stringify(correctAnswers),
+      incorrectAnswer1: JSON.stringify(incorrectAnswers1),
+      incorrectAnswer2: JSON.stringify(incorrectAnswers2),
+      incorrectAnswer3: JSON.stringify(incorrectAnswers3),
+    };
+
+    console.log(formattedQuiz);
+    postQuiz(formattedQuiz);
   };
 
-  const handleQuizChange = (e) => {
-    setQuizState({
-      ...quizState,
-      [e.target.name]: [e.target.value],
-    });
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleDescriptionChange = (e) => {
+    setDescription(e.target.value);
   };
 
   const handleQuestionChange = (e) => {
@@ -51,16 +76,16 @@ export const Form = () => {
         <input
           type="text"
           name="title"
-          value={quizState.title}
+          value={title}
           placeholder="Quiz Title"
-          onChange={handleQuizChange}
+          onChange={handleTitleChange}
         />
         <input
           type="text"
           name="description"
-          value={quizState.description}
+          value={description}
           placeholder="Quiz Description"
-          onChange={handleQuizChange}
+          onChange={handleDescriptionChange}
         />
         {
           questionState.map((val, idx) => (

@@ -11,17 +11,19 @@ import {
 import Header from './Components/Header';
 import Sidebar from './Components/Sidebar/Sidebar';
 import Form from './Components/Form/Form';
+import { Home } from './Components/Home/Home';
 
 function App() {
   return (
     <>
       <Header />
       <Router>
+        <Sidebar />
         <Switch>
           <Route
             path="/"
             exact
-            render={(routerProps) => <Sidebar {...routerProps} />}
+            render={(routerProps) => <Home {...routerProps} />}
           />
           <Route
             path="/quizform"
