@@ -2,10 +2,13 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable import/no-named-as-default */
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { postQuiz } from '../../services/quiz-api';
 import Question from './Question';
 
 export const Form = () => {
+  const history = useHistory();
+
   const blankQuestion = {
     question: '',
     correctAnswer: '',
@@ -22,7 +25,7 @@ export const Form = () => {
     setQuestionState([...questionState, { ...blankQuestion }]);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const questions = [];
@@ -49,8 +52,8 @@ export const Form = () => {
       incorrectAnswer3: JSON.stringify(incorrectAnswers3),
     };
 
-    console.log(formattedQuiz);
-    postQuiz(formattedQuiz);
+    await postQuiz(formattedQuiz);
+    history.push('/');
   };
 
   const handleTitleChange = (e) => {

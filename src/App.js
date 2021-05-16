@@ -12,6 +12,7 @@ import Header from './Components/Header';
 import Sidebar from './Components/Sidebar/Sidebar';
 import Form from './Components/Form/Form';
 import { Home } from './Components/Home/Home';
+import { Quiz } from './Components/Quiz/Quiz';
 
 function App() {
   return (
@@ -29,6 +30,11 @@ function App() {
             path="/quizform"
             exact
             render={(routerProps) => <Form {...routerProps} />}
+          />
+          <Route
+            path="/quizzes/:id"
+            exact
+            render={(routerProps) => <Quiz {...routerProps} />}
           />
         </Switch>
       </Router>

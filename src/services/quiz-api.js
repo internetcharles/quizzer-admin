@@ -13,3 +13,6 @@ export const postQuiz = (quiz) => fetch(`${URL}/api/quizzes`, {
 
 export const getQuizzes = () => fetch(`${URL}/api/quizzes`)
   .then((res) => res.json());
+
+export const getQuiz = (id) => fetch(`${URL}/api/quizzes/${id}`)
+  .then((res) => res.json());
