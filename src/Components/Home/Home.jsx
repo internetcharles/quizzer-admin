@@ -10,7 +10,7 @@ export const Home = () => {
 
   const quizList = quizzes.map((quiz) => (
     <li key={quiz.id}>
-      <Link to={`/${quiz.id}`}>
+      <Link to={`/quizzes/${quiz.id}`}>
         <h2>{quiz.title}</h2>
         <h2>{quiz.description}</h2>
       </Link>
