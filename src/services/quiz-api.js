@@ -16,3 +16,10 @@ export const getQuizzes = () => fetch(`${URL}/api/quizzes`)
 
 export const getQuiz = (id) => fetch(`${URL}/api/quizzes/${id}`)
   .then((res) => res.json());
+
+export const deleteQuiz = (id) => fetch(`${URL}/api/quizzes/${id}`, {
+  method: 'DELETE',
+  headers: { 'Content-Type': 'application/json' },
+})
+  .then((res) => res.json())
+  .then((res) => console.log(res));

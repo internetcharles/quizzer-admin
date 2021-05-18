@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=KoHo&display=swap');
+
+.sidebar {
+  background: rgb(26,24,52);
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: white;
+  font-family: 'KoHo', sans-serif;
+  font-size: 30px;
+}
+
+.fillObject {
+  position: fixed;
+  height: 40px;
+  width: 40px;
+  top: 100px;
+  left: 150px;
+  background: rgb(26,24,52);
+}
+
+.whiteObject {
+  position: fixed;
+  height: 40px;
+  width: 40px;
+  top: 100px;
+  left: 150px;
+  border-top-left-radius: 100px;
+  background: rgb(255, 255, 255);
+}
+
+.menubars {
+  margin-left: 2rem;
+  font-size: 2rem;
+  background: none;
+}
+
+.navMenu {
+  background: rgb(26,24,52);
+  background: linear-gradient(180deg, rgba(26,24,52,1) 0%, rgba(36,15,50,1) 42%, rgb(1, 4, 47) 95%);
+  width: 150px;
+  height: 100vh;
+  display: flex;
+  justify-content: start;
+  position: fixed;
+  top: 80px;
+  color: white;
+  padding-top: 50px;
+}
+
+.navMenuItems {
+  color: white;
+  font-family: 'KoHo', sans-serif;
+}
+
+.quizHeader {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+a:link {
+  color: white;
+}
+
+a:visited {
+  color: white;
+}

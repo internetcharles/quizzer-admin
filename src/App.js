@@ -8,7 +8,6 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import Header from './Components/Header';
 import Sidebar from './Components/Sidebar/Sidebar';
 import Form from './Components/Form/Form';
 import { Home } from './Components/Home/Home';
@@ -17,7 +16,6 @@ import { Quiz } from './Components/Quiz/Quiz';
 function App() {
   return (
     <>
-      <Header />
       <Router>
         <Sidebar />
         <Switch>
