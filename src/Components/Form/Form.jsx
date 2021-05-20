@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { postQuiz } from '../../services/quiz-api';
 import Question from './Question';
+import styles from './Form.module.css';
 
 export const Form = () => {
   const history = useHistory();
@@ -72,25 +73,31 @@ export const Form = () => {
 
   return (
     <>
-      <div>
-        New Quiz
-      </div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="title"
-          value={title}
-          placeholder="Quiz Title"
-          onChange={handleTitleChange}
-        />
-        <input
-          type="text"
-          name="description"
-          value={description}
-          placeholder="Quiz Description"
-          onChange={handleDescriptionChange}
-        />
-        {
+      <div className={styles.form}>
+        <div className={styles.newQuiz}>
+          New Quiz
+        </div>
+        <form onSubmit={handleSubmit}>
+          <div className={styles.titleDescription}>
+            <input
+              type="text"
+              name="title"
+              value={title}
+              placeholder="Quiz Title"
+              onChange={handleTitleChange}
+              className={styles.title}
+            />
+            <input
+              type="text"
+              name="description"
+              value={description}
+              placeholder="Quiz Description"
+              onChange={handleDescriptionChange}
+              className={styles.description}
+            />
+          </div>
+          <div className={styles.questions}>
+            {
           questionState.map((val, idx) => (
             <Question
               key={`question-${idx}`}
@@ -100,9 +107,11 @@ export const Form = () => {
             />
           ))
         }
-        <input type="button" value="Add New Question" onClick={addQuestion} />
-        <button type="submit">Create</button>
-      </form>
+          </div>
+          <input type="button" value="Add New Question" onClick={addQuestion} />
+          <button type="submit">Create</button>
+        </form>
+      </div>
     </>
   );
 };

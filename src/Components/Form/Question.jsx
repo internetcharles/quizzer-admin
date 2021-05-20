@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './Question.module.css';
 
 export const Question = ({
   handleQuestionChange,
@@ -14,7 +15,7 @@ export const Question = ({
   const incorrectAnswer2Id = `incorrectAnswer2-${idx}`;
   const incorrectAnswer3Id = `incorrectAnswer3-${idx}`;
   return (
-    <div key={`question-${idx}`}>
+    <div key={`question-${idx}`} className={styles.questions}>
       <label htmlFor={questionId}>{`Question #${idx + 1}`}</label>
       <input
         type="text"
